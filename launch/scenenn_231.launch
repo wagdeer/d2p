@@ -1,0 +1,10 @@
+<launch>
+  <arg name="bag_file" default="/mnt/d/rosbag/scenenn_231.bag"/>
+  <arg name="config_path" default="$(find d2p)/config/scenenn_231.yaml"/>
+  
+  <node name="d2p" pkg="d2p" type="d2p_node" output="screen">
+    <param name="config_file" type="string" value="$(arg config_path)" />
+  </node>
+
+  <node name="bag" pkg="rosbag" type="play" output="log" args="--delay 1 $(arg bag_file)"></node>
+</launch>
